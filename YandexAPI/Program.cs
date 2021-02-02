@@ -6,34 +6,19 @@ namespace YandexAPI
     {
         static void Main(string[] args)
         {
-            string path, address;
-            #region Ввод данных
+
             Console.ForegroundColor = ConsoleColor.White;
-            while (true)
+            if (args.Length > 0)
             {
-
-                Console.WriteLine("Введите путь к файлам на яндекс диске. Например, '/загрузка/фото'");
-                path = Console.ReadLine();
-                if (path != "")
-                {
-                    break;
-                }
+                WebManeger webManeger = new WebManeger();
+                webManeger.DownloadFiles(args[0], args[1]);
+                Console.Read();
             }
-            while (true)
+            else
             {
-                Console.WriteLine("Введите сетевой адрес. Например, 'https://yadi.sk/d/olHnWUtH93RHtA'");
-                address = Console.ReadLine();
-                if (path != "")
-                {
-                    break;
-                }
-
-
+                Console.WriteLine("Введите два параметра:\n1.Директорию(путь к папке)\n2.Адрес Яндекс диска");
             }
-            #endregion
-            WebManeger webManeger = new WebManeger();
-            webManeger.DownloadFiles(path,address);
-            Console.Read();
+           
         }
     }
 }
